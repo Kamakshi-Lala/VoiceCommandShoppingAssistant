@@ -1,4 +1,5 @@
-from fastapi import HTMLResponse,FastAPI, HTTPException, Body
+from fastapi import FastAPI, HTTPException, Body
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
