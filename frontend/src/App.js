@@ -4,17 +4,29 @@ import VoiceInput from "./VoiceInput";
 
 function App() {
   const [list, setList] = useState([]);
-
+  const [feedback, setFeedback] = useState("");
+  
   const fetchList = async () => {
     const res = await axios.get("https://shopping-assistant-74lt.onrender.com/list/");
     setList(res.data);
   };
 
   const handleVoiceCommand = async (command) => {
-    await axios.post("https://shopping-assistant-74lt.onrender.com/parse_command/", {
-      text: command,
-    });
-    fetchList();
+    try {
+      const res = await axios.post("https://shopping-assistant-74lt.onrender.com/parse_command/", {
+        text: command,
+      });
+
+      if (res.data.message) {
+        setFeedback(res.data.message);
+      } else {
+        setFeedback(`Processed: "${command}"`);
+      }
+
+      fetchList();
+    } catch (err) {
+      setFeedback("Error Please try again.");
+    }
   };
 
   return (
@@ -38,6 +50,24 @@ function App() {
         <VoiceInput onCommand={handleVoiceCommand} />
       </div>
 
+      {/* Real-time feedback */}
+      {feedback && (
+        <div
+          style={{
+            marginBottom: "15px",
+            padding: "10px 15px",
+            borderRadius: "6px",
+            backgroundColor: "#ecf0f1",
+            color: "#2c3e50",
+            fontSize: "16px",
+            fontStyle: "italic",
+            boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+          }}
+        >
+          {feedback}
+        </div>
+      )}
+
       <button
         onClick={fetchList}
         style={{
@@ -51,7 +81,7 @@ function App() {
           marginBottom: "30px",
         }}
       >
-        🔄 Refresh List
+        Refresh List
       </button>
 
       <ul style={{ listStyle: "none", padding: 0, width: "100%", maxWidth: "400px" }}>

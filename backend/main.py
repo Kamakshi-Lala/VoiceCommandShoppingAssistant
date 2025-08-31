@@ -25,6 +25,7 @@ class Item(BaseModel):
     quantity: int = 1
     category: str = "general"
 
+
 @app.post("/add/")
 def add_item(item: Item):
     db = SessionLocal()
@@ -33,14 +34,25 @@ def add_item(item: Item):
     db.commit()
     db.refresh(new_item)
     db.close()
-    return {"message": f"{item.quantity} {item.item}(s) added."}
+    return {
+        "status": "success",
+        "action": "add",
+        "item": item.item,
+        "quantity": item.quantity,
+        "message": f"{item.quantity} {item.item}(s) added."
+    }
+
 
 @app.get("/list/")
 def list_items():
     db = SessionLocal()
     items = db.query(ItemDB).all()
     db.close()
-    return items
+    return [
+        {"id": i.id, "item": i.item, "quantity": i.quantity, "category": i.category}
+        for i in items
+    ]
+
 
 @app.post("/parse_command/")
 def parse_command(data: dict = Body(...)):
@@ -59,7 +71,13 @@ def parse_command(data: dict = Body(...)):
         db.commit()
         db.refresh(new_item)
         db.close()
-        return {"message": f"Added {quantity} {item}"}
+        return {
+            "status": "success",
+            "action": "add",
+            "item": item,
+            "quantity": quantity,
+            "message": f"Added {quantity} {item}(s)."
+        }
 
     elif "remove" in text:
         item = text.split()[-1]
@@ -68,10 +86,24 @@ def parse_command(data: dict = Body(...)):
             db.delete(item_db)
             db.commit()
             db.close()
-            return {"message": f"Removed {item}"}
+            return {
+                "status": "success",
+                "action": "remove",
+                "item": item,
+                "message": f"Removed {item}."
+            }
         else:
             db.close()
-            return {"message": f"Item {item} not found"}
+            return {
+                "status": "error",
+                "action": "remove",
+                "item": item,
+                "message": f"Item {item} not found."
+            }
     
     db.close()
-    return {"message": "Command not understood"}
+    return {
+        "status": "error",
+        "action": "unknown",
+        "message": "Command not understood."
+    }
