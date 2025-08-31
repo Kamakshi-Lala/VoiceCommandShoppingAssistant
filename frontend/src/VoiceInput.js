@@ -23,7 +23,7 @@ function VoiceInput({ onCommand }) {
   return (
     <div>
       <button onClick={startListening}>
-        {listening ? "Listening..." : "Start Voice Command"}
+        {listening ? "Listening..." : "Speak to add/remove items"}
       </button>
       <p>Transcript: {transcript}</p>
     </div>
