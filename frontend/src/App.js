@@ -27,16 +27,7 @@ function App() {
     } catch (err) {
       setFeedback("Error Please try again.");
     }
-  };
-
-  // eslint-disable-next-line no-undef
-  useEffect(() => {  // dummy for testing
-    setList([
-      { id: 1, item: "Milk", quantity: "2L" },
-      { id: 2, item: "Bread", quantity: "1 loaf" },
-    ]);
-  }, []);
-  
+  };  
   return (
     <div
       style={{
@@ -51,7 +42,7 @@ function App() {
       }}
     >
       <h1 style={{ color: "#2c3e50", marginBottom: "20px" }}>
-        🛒 Shopping Assistant
+        🛒 SHOPPING ASSISSTANT
       </h1>
 
       <div style={{ marginBottom: "20px" }}>
