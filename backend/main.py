@@ -25,6 +25,10 @@ class Item(BaseModel):
     quantity: int = 1
     category: str = "general"
 
+@app.get("/")
+def root():
+    return {"message": "Welcome to Shopping Assistant"}
+
 
 @app.post("/add/")
 def add_item(item: Item):
