@@ -4,7 +4,7 @@ from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-DB_URL = "postgresql://username:password@host:port/dbname"
+DB_URL = "postgresql://my_db_u4up_user:XGyh0GORZaEjNDblJ5f9slLHlm103WFJ@dpg-d2q5lth5pdvs73dl9a60-a:5432/my_db_u4up"
 engine = create_engine(DB_URL)
 SessionLocal = sessionmaker(bind=engine)
 Base = declarative_base()
