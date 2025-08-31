@@ -25,19 +25,111 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <style>
+    /* Reset some default styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+    }
+
+    /* Navbar container */
+    .navbar {
+      display: flex;
+      background-color: #3498db;
+      padding: 10px 20px;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Logo / brand */
+    .navbar .brand {
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    /* Nav links */
+    .navbar .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+
+    .navbar .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Page content placeholder */
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #34495e;
+      font-size: 18px;
+    }
+  </style>
   </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<body>
+  <div id="root"></div>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" class="brand">Shopping Assistant</a>
+    <div class="nav-links">
+      <a href="#login">Login</a>
+      <a href="#signup">Signup</a>
+      <a href="#suggestion">Suggestion</a>
+    </div>
+  </nav>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  <!-- Page content -->
+  <div class="content">
+    <h1>Welcome to Shopping Assistant</h1>
+    <p>Select a tab above to navigate.</p>
+  </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+  <!-- Optional placeholders for sections -->
+  <div id="login" class="content">
+    <h2>Login Section</h2>
+    <p>This is a static login form placeholder.</p>
+  </div>
+
+  <div id="signup" class="content">
+    <h2>Signup Section</h2>
+    <p>This is a static signup form placeholder.</p>
+  </div>
+
+  <div id="suggestion" class="content">
+    <h2>Suggestion Section</h2>
+    <p>This is a static suggestion form placeholder.</p>
+  </div>
   </body>
 </html>
