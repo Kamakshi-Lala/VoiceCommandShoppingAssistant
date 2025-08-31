@@ -29,6 +29,14 @@ function App() {
     }
   };
 
+  // eslint-disable-next-line no-undef
+  useEffect(() => {  // dummy for testing
+    setList([
+      { id: 1, item: "Milk", quantity: "2L" },
+      { id: 2, item: "Bread", quantity: "1 loaf" },
+    ]);
+  }, []);
+  
   return (
     <div
       style={{
