@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Body
+from fastapi import HTMLResponse,FastAPI, HTTPException, Body
 from pydantic import BaseModel
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
@@ -53,10 +53,9 @@ def root():
         </style>
     </head>
     <body>
-        <h1>🛒 Shopping Assistant API</h1>
+        <h1>Shopping Assistant API</h1>
         <p>Welcome! This is the backend service.</p>
-        <p>👉 View your shopping list: <a href="/list/">/list/</a></p>
-        <p>👉 Try the interactive API docs: <a href="/docs">/docs</a></p>
+        <p> View your shopping list: <a href="/list/">/list/</a></p>
     </body>
     </html>
     """
