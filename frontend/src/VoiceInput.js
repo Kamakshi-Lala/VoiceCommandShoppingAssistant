@@ -6,8 +6,7 @@ function VoiceInput({ onCommand }) {
 
   const startListening = () => {
     const recognition = new window.webkitSpeechRecognition(); // Chrome only
-    recognition.lang = "hi-IN"; // Example: Hindi (can be dynamic)
-    recognition.continuous = false;
+    recognition.lang = "en-IN"; 
     recognition.interimResults = false;
 
     recognition.onstart = () => setListening(true);
