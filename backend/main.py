@@ -27,7 +27,40 @@ class Item(BaseModel):
 
 @app.get("/")
 def root():
-    return {"message": "Welcome to Shopping Assistant"}
+    return """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Shopping Assistant</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: #f4f6f9;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                margin: 0;
+            }
+            h1 { color: #2c3e50; }
+            p  { color: #34495e; font-size: 18px; }
+            a {
+                color: #3498db;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🛒 Shopping Assistant API</h1>
+        <p>Welcome! This is the backend service.</p>
+        <p>👉 View your shopping list: <a href="/list/">/list/</a></p>
+        <p>👉 Try the interactive API docs: <a href="/docs">/docs</a></p>
+    </body>
+    </html>
+    """
+    
 
 
 @app.post("/add/")
